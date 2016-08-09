@@ -13,10 +13,20 @@ cars_list = [
 
 
 class TestCarsList(unittest.TestCase):
-    def test_cars_list(self):
-        self.assertEqual(find_car(cars_list, "BMW"), [Car("BMW", "M5"),  Car("BMW", "M3")])
-        self.assertEqual(find_car(cars_list, "Porsche"), Car("Porsche", "911"))
-        self.assertEqual(find_car(cars_list, "Alpha Romeo"), Car("Alpha Romeo", "Julette"))
+    def test_bmw(self):
+        filter_bmw = find_car(cars_list, "BMW")
+
+        self.assertEquals(filter_bmw[0].vendor, "BMW")
+        self.assertEquals(filter_bmw[0].name, "M5")
+
+        self.assertEquals(filter_bmw[1].vendor, "BMW")
+        self.assertEquals(filter_bmw[1].name, "M3")
+
+    def test_porche(self):
+        self.assertTrue(find_car(cars_list, "Porsche") == Car("Porsche", "911"))
+
+    def test_alpha(self):
+        self.assertTrue(find_car(cars_list, "Alpha Romeo") == Car("Alpha Romeo", "Julette"))
 
 
 if __name__ == '__main__':
