@@ -1,5 +1,2 @@
-[Mitshubishi Lancer
-, Bugatti Veyron
-, Tesla Model E
-, Tesla Roadster
-, Subaru Impreza]
+Tesla;Model E
+Tesla;Roadster
