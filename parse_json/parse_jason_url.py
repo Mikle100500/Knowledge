@@ -7,5 +7,4 @@ object_list = response.json()
 
 # new_python_object = json.loads(object_list)
 
-print
-len(object_list)
+print (len(object_list))
