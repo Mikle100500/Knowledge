@@ -1,5 +1,4 @@
 import unittest
-
 from class_cars import find_car, Car
 
 cars_list = [
@@ -27,6 +26,9 @@ class TestCarsList(unittest.TestCase):
 
     def test_alpha(self):
         self.assertTrue(find_car(cars_list, "Alpha Romeo") == Car("Alpha Romeo", "Julette"))
+
+    def test_objects(self):
+        assert find_car(cars_list, "BMW") == Car("BMW", "M5")
 
 
 if __name__ == '__main__':
