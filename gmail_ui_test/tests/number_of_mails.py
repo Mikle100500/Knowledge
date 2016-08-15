@@ -4,17 +4,20 @@ from selenium import webdriver
 from gmail_ui_test.wrappers.gmail_wrapper import GmailPage
 
 
-class NumberOfMails(unittest.TestCase):
+class TestNumberOfMails(unittest.TestCase):
 
-    def setUpClass(cls):
-         cls.driver = webdriver.Firefox()
+    def setUpClass(self):
+        self.driver = webdriver.Firefox()
 
     @staticmethod
     def page_init():
         return GmailPage
 
     def test_number_of_mails(self):
-        gmail = GmailPage()
+        gmail = self.page_init()
         gmail.navigate_to_gmail()
-        gmail.login('forTestingJohnTester@gmail.com', 'gmailtest')
+        gmail.login(self,'forTestingJohnTester@gmail.com', 'gmailtest')
         self.assertEquals(gmail.number_of_mails(), 3)
+
+if __name__ == '__main__':
+    unittest.main()
