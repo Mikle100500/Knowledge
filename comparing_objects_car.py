@@ -1,7 +1,7 @@
 from class_cars import Car
 
 object_1 = Car("BMW", "X5")
-object_2 = Car("BMW", "5")
+object_2 = Car("BMW", "X5")
 
 
 print(object_1 == object_2)
