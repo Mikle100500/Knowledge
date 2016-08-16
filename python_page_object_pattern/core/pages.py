@@ -19,21 +19,21 @@ class MainPage(BasePage):
 
 class LogInEmailAccount(BasePage):
     def set_email(self):
-        email = self.driver.find_element(By.ID, 'next').click()
+        email = self.driver.find_element(By.ID, 'Email')
         email.send_keys('forTestingJohnTester@gmail.com', Keys.ENTER)
 
     def set_password(self):
-        element = self.driver.find_element(PageLocators.SET_PASSWORD_BUTTON)
+        element = self.driver.find_element(By.ID, 'Passwd')
         element.send_keys('gmailtest', Keys.ENTER)
 
 
 class EmailPage(BasePage):
     def load_mail_page(self):
-        element = self.driver.find_element(PageLocators.EMAIL_BUTTON)
+        element = self.driver.find_element(By.XPATH, './/*[@id="gbw"]/div/div/div[1]/div[2]/a')
         element.click()
 
-    def count_letters_at_a_page(self):
-        element = self.driver.find_element(PageLocators.COUNT_ALL_LETTERS)
+    def count_letters_at_the_page(self):
+        element = self.driver.find_elements(By.XPATH, '//table[contains(@id, ":3")]//tr')
         return len(element)
 
     def send_a_letter_to_smb(self, adress, theme_of_the_letter):

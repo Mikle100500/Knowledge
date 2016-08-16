@@ -4,12 +4,12 @@ from selenium import webdriver
 
 class BaseTestPage(unittest.TestCase):
     @classmethod
-    def setUp(self):
+    def setUpClass(self):
         self.driver = webdriver.Firefox()
         self.driver.get("http://www.google.com/ncr")
 
     @classmethod
-    def tearDown(self):
+    def tearDownClass(self):
         self.driver.close()
 
 

@@ -1,4 +1,5 @@
 import unittest
+from time import sleep
 
 from selenium import webdriver
 
@@ -23,7 +24,13 @@ class GoogleSearch(unittest.TestCase):
     def test_login_page(self):
         login_page = pages.LogInEmailAccount(self.driver)
         login_page.set_email()
+        sleep(0.5)
         login_page.set_password()
+
+    def test_email_page(self):
+        email_page = pages.EmailPage(self.driver)
+        email_page.load_mail_page()
+        assert email_page.count_letters_at_the_page() == 3
 
 if __name__ == "__main__":
     unittest.main()
