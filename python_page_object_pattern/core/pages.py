@@ -1,12 +1,16 @@
+from telnetlib import EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from python_page_object_pattern.core.locators import PageLocators
+from selenium.webdriver.support.wait import WebDriverWait
 
 
 class BasePage(object):
     def __init__(self, driver):
         self.driver = driver
+        self.wait = WebDriverWait(driver, 3)
 
+
+# element = wait.until(EC.element_to_be_clickable((By.ID, locator)))
 
 class MainPage(BasePage):
     def is_title_matches(self):
@@ -23,6 +27,7 @@ class LogInEmailAccount(BasePage):
         email.send_keys('forTestingJohnTester@gmail.com', Keys.ENTER)
 
     def set_password(self):
+        self.wait.until(EC.element_to_be_clickable((By.ID, 'signIn')))
         element = self.driver.find_element(By.ID, 'Passwd')
         element.send_keys('gmailtest', Keys.ENTER)
 
@@ -37,11 +42,11 @@ class EmailPage(BasePage):
         return len(element)
 
     def send_a_letter_to_smb(self, adress, theme_of_the_letter):
-        element = self.driver.find_element(PageLocators.COMPOSE)
+        element = self.driver.find_element(By.ID, ':4s')
         element.click()
-        element = self.driver.find_element(PageLocators.SEND_TO)
+        element = self.driver.find_element(By.ID, ':a2')
         element.send_keys(adress, Keys.ENTER)
-        element = self.driver.find_element(PageLocators.THEME_OF_THE_LETTER)
+        element = self.driver.find_element(By.ID, ':a2')
         element.send_keys(theme_of_the_letter, Keys.ENTER)
-        element = self.driver.find_element(PageLocators.SEND_LETTER)
+        element = self.driver.find_element(By.ID, ':9c')
         element.click()
