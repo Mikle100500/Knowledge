@@ -1,15 +1,15 @@
 import unittest
-from time import sleep
 
 from selenium import webdriver
 
 from python_page_object_pattern.core import pages
 
 
-class GoogleSearch(unittest.TestCase):
+class GoogleSearchTest(unittest.TestCase):
     @classmethod
     def setUpClass(self):
         self.driver = webdriver.Firefox()
+        self.driver.implicitly_wait(5)
         self.driver.get("http://www.google.com/ncr")
 
     @classmethod
@@ -25,15 +25,16 @@ class GoogleSearch(unittest.TestCase):
         login_page = pages.LogInEmailAccount(self.driver)
         login_page.set_email()
         login_page.set_password()
+        login_page.load_mail_page()
 
-    def test_email_page(self):
+    def test_count_letters(self):
         email_page = pages.EmailPage(self.driver)
-        email_page.load_mail_page()
-        assert email_page.count_letters_at_the_page() == 0
+        assert email_page.count_letters_at_the_page() == 3
 
-    # def test_send_mail(self):
-    #     mail = pages.EmailPage(self.driver)
-    #     mail.send_a_letter_to_smb(self, 'forTestingJohnTester@gmail.com', 'TestTestTest')
+    def test_send_mail(self):
+        mail = pages.EmailPage(self.driver)
+        mail.send_a_letter_to_yourself()
+
 
 if __name__ == "__main__":
     unittest.main()
