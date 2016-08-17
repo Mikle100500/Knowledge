@@ -36,11 +36,12 @@ class EmailPage(BasePage):
         return len(element)
 
     def send_a_letter_to_yourself(self):
-        element = self.driver.find_element(By.ID, ':4s')
+        element = self.driver.find_element(By.XPATH, './/*[@id=":4i"]/div/div')
         element.click()
-        element = self.driver.find_element(By.ID, ':a2')
+        element = self.driver.find_element(By.XPATH, '//textarea[@name="to"]')
         element.send_keys('forTestingJohnTester@gmail.com', Keys.ENTER)
-        element = self.driver.find_element(By.ID, ':a2')
+        element = self.driver.find_element(By.XPATH, '//input[@name="subjectbox"]')
+        element.click()
         element.send_keys('TEST', Keys.ENTER)
-        element = self.driver.find_element(By.ID, ':9c')
+        element = self.driver.find_element(By.XPATH, '//div[@id=":89"]')
         element.click()
