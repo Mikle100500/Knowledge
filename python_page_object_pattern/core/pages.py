@@ -35,13 +35,13 @@ class EmailPage(BasePage):
         element = self.driver.find_elements(By.XPATH, '//table[contains(@id, ":3")]//tr')
         return len(element)
 
-    def send_a_letter_to_yourself(self):
-        element = self.driver.find_element(By.XPATH, './/*[@id=":4i"]/div/div')
+    def send_a_letter_to_yourself(self, email_adress, subject):
+        element = self.driver.find_element(By.XPATH, './/*[@id=":52"]/div/div')
         element.click()
         element = self.driver.find_element(By.XPATH, '//textarea[@name="to"]')
-        element.send_keys('forTestingJohnTester@gmail.com', Keys.ENTER)
+        element.send_keys(email_adress, Keys.ENTER)
         element = self.driver.find_element(By.XPATH, '//input[@name="subjectbox"]')
         element.click()
-        element.send_keys('TEST', Keys.ENTER)
-        element = self.driver.find_element(By.XPATH, '//div[@id=":89"]')
-        element.click()
+        element.send_keys(subject, Keys.ENTER)
+        element.send_keys(Keys.CONTROL + Keys.ENTER)
+
