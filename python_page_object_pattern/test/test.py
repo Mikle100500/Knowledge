@@ -1,21 +1,8 @@
-import unittest
-
-from selenium import webdriver
-
 from python_page_object_pattern.core import pages
+from python_page_object_pattern.test.BaseTestPage import BaseTestPage
 
 
-class GoogleSearchTest(unittest.TestCase):
-    @classmethod
-    def setUpClass(self):
-        self.driver = webdriver.Firefox()
-        self.driver.implicitly_wait(3)
-        self.driver.get("http://www.google.com/ncr")
-
-    @classmethod
-    def tearDownClass(self):
-        self.driver.quit()
-
+class GoogleSearchTest(BaseTestPage):
     def test_01_get_gmail_page(self):
         main_page = pages.MainPage(self.driver)
         assert main_page.is_title_matches()
@@ -34,7 +21,3 @@ class GoogleSearchTest(unittest.TestCase):
     def test_04_send_mail(self):
         mail = pages.EmailPage(self.driver)
         mail.send_a_letter_to_yourself()
-
-
-if __name__ == "__main__":
-    unittest.main()
