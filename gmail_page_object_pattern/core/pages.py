@@ -1,10 +1,16 @@
+import selenium
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.wait import WebDriverWait
 
 
 class BasePage(object):
     def __init__(self, driver):
         self.driver = driver
+        self.wait = WebDriverWait(
+            self.driver, 25.0,
+            ignored_exceptions=selenium.common.exceptions.WebDriverException
+        )
 
 
 class MainPage(BasePage):
@@ -44,4 +50,3 @@ class EmailPage(BasePage):
         element.click()
         element.send_keys(subject, Keys.ENTER)
         element.send_keys(Keys.CONTROL + Keys.ENTER)
-

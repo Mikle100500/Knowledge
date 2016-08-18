@@ -1,8 +1,8 @@
-from python_page_object_pattern.core import pages
-from python_page_object_pattern.test.BaseTestPage import BaseTestPage
+from gmail_page_object_pattern.core import pages
+from gmail_page_object_pattern.test.BaseTest import BaseTest
 
 
-class GoogleSearchTest(BaseTestPage):
+class GoogleSearchTest(BaseTest):
     def test_01_get_gmail_page(self):
         main_page = pages.MainPage(self.driver)
         assert main_page.is_title_matches()
