@@ -8,7 +8,7 @@ class BasePage(object):
     def __init__(self, driver):
         self.driver = driver
         self.wait = WebDriverWait(
-            self.driver, 25.0,
+            self.driver, 5.0,
             ignored_exceptions=selenium.common.exceptions.WebDriverException
         )
 

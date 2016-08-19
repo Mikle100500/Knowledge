@@ -3,6 +3,7 @@ from selenium import webdriver
 
 
 class BaseTest(unittest.TestCase):
+
     @classmethod
     def setUpClass(self):
         self.driver = webdriver.Firefox()
@@ -12,7 +13,3 @@ class BaseTest(unittest.TestCase):
     @classmethod
     def tearDownClass(self):
         self.driver.close()
-
-
-if __name__ == "__main__":
-    unittest.main()

@@ -1,23 +1,24 @@
 from gmail_page_object_pattern.core import pages
-from gmail_page_object_pattern.test.BaseTest import BaseTest
+from gmail_page_pytest.test import base_test as BaseTestPytest
 
 
-class GoogleSearchTest(BaseTest):
+class TestGoogleSearchPytest(BaseTestPytest):
     def test_01_get_gmail_page(self):
         main_page = pages.MainPage(self.driver)
         assert main_page.is_title_matches()
         main_page.click_login_button()
 
     def test_02_login_page(self):
+        title = "Входящие - fortestingjohntester@gmail.com - Gmail".encode(encoding='utf-8')
         login_page = pages.LogInEmailAccount(self.driver)
         login_page.set_email()
         login_page.set_password()
         login_page.load_mail_page()
-        assert self.driver.title.encode(encoding='utf-8') == "Входящие - fortestingjohntester@gmail.com - Gmail".encode(encoding='utf-8')
+        assert self.driver.title.encode(encoding='utf-8') == title
 
     def test_03_count_letters(self):
         email_page = pages.EmailPage(self.driver)
-        assert email_page.count_letters_at_the_page() == 5, "Value should be equal"
+        assert email_page.count_letters_at_the_page() == 5
 
     def test_04_send_mail(self):
         mail = pages.EmailPage(self.driver)
